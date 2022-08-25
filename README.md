@@ -31,7 +31,7 @@ pip install transformers==4.19.2
 pip install torchmetrics==0.6.0
 pip install kornia==0.6
 
-pip install discord
+pip install discord.py
 
 pip install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
 pip install -e git+https://github.com/openai/CLIP.git@main#egg=clip
