@@ -63,7 +63,7 @@ import time
 from ldm.util import instantiate_from_config
 import math
 import shlex
-import nextcord
+import discord
 
 from ldm.util import instantiate_from_config
 
@@ -326,7 +326,7 @@ class T2I:
         print(("Your samples are ready in {0:.2f} minutes and waiting for you here \n" + sample_path).format(time_taken))
 
         for z in range(len(img_list)):
-            img_list_2.append(nextcord.File(img_list[z]))
+            img_list_2.append(discord.File(img_list[z]))
         return [img_list_2,seed_list]
         
 

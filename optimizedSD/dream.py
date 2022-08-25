@@ -6,19 +6,18 @@ from timeit import default_timer as timer
 import os
 import argparse, os, sys, glob, uuid
 from config import settings
-import nextcord
+import discord
 import threading
 from functools import wraps, partial
 import queue
 from concurrent.futures import ThreadPoolExecutor
-from nextcord.ext import commands, tasks
+from discord.ext import commands, tasks
 sys.path.append('.')
 
-from ldm.simplet2i_alt import T2I
+from ldm.simplet2i import T2I
 model = T2I()
 model.load_model()
-intents = nextcord.Intents.default()
-intents.message_content = True
+intents = discord.Intents.default()
 intents.members = True
 queue = asyncio.Queue()
 loop = asyncio.get_event_loop()
