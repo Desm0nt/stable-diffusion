@@ -1,11 +1,5 @@
 import argparse, os, sys, glob
-
-os.environ["CUDA_VISIBLE_DEVICES"]=""
-
 import torch
-
-torch.cuda.is_available = lambda: False
-
 import numpy as np
 from omegaconf import OmegaConf
 from PIL import Image
@@ -43,7 +37,7 @@ def load_model_from_config(config, ckpt, verbose=False):
         print("unexpected keys:")
         print(u)
 
-    #model.cuda()
+    model.cuda()
     model.eval()
     return model
 
@@ -193,7 +187,7 @@ def main():
     config = OmegaConf.load(f"{opt.config}")
     model = load_model_from_config(config, f"{opt.ckpt}")
 
-    device = torch.device("cpu")#torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     model = model.to(device)
 
     if opt.plms:
